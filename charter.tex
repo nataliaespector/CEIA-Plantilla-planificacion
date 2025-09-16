@@ -84,7 +84,7 @@ Buenos Aires, \fechaInicioName
 
 \vspace{2cm}
 
-Por medio de la presente se acuerda con el \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'' y consistirá en la implementación de una red neuronal convolucional para la predicción de histogramas dosis-volumen en radioterapia de próstata, a partir de la tomografía computada de simulación y el contorneo de estructuras. El trabajo tendrá un presupuesto preliminar estimado de \textcolor{red}{600} horas y un costo estimado de \textcolor{red}{\$ 13400} dólares \textcolor{red}{(a ajustar en función de puntos 9 y 12)}, con fecha de inicio el \fechaInicioName\hspace{1px} y fecha de presentación pública en el mes de \fechaFinalName.
+Por medio de la presente se acuerda con el \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'' y consistirá en la implementación de una red neuronal convolucional para la predicción de histogramas dosis-volumen en radioterapia de próstata, a partir de la tomografía computada de simulación y el contorneo de estructuras. El trabajo tendrá un presupuesto preliminar estimado de 600 horas y un costo estimado de \textcolor{red}{\$ 13400} dólares \textcolor{red}{(a ajustar en función de punto 12)}, con fecha de inicio el \fechaInicioName\hspace{1px} y fecha de presentación pública en el mes de \fechaFinalName.
 
 Se adjunta a esta acta la planificación inicial.
 
@@ -119,7 +119,7 @@ Se puede observar un esquema del flujo de trabajo para la planificación de un t
 \label{fig:FlujoTrabajo}
 \end{figure}
 
-\vspace{15px}
+\vspace{10px}
 
 Estas imágenes de tomografía se cargan en el TPS, donde el médico radioterapeuta dibuja las estructuras de interés: órganos de riesgo (OAR, del inglés \textit{Organs At Risk}) y volúmenes blanco a tratar. Además, el médico prescribe la dosis terapéutica y las dosis límite de los OARs. 
 
@@ -302,15 +302,14 @@ Finalmente, para obtener el total de \textit{story points} se sumarán los valor
 \section{8. Entregables principales del proyecto}
 \label{sec:entregables}
 
-Los entregables del proyecto son :
+Los entregables del proyecto son:
 
 \begin{itemize}
 	\item Documento de planificación del proyecto.
 	\item Base de datos anonimizada y procesada.
-	\item Repositorio del código desarrollado.
 	\item Instructivo de uso de la red entrenada.
 	\item Memoria del trabajo final.
-	\item Presentación final
+	\item Presentación final.
 \end{itemize}
 
 \section{9. Desglose del trabajo en tareas}
@@ -328,29 +327,26 @@ Los entregables del proyecto son :
 	\item Confección de documentación para presentación a CEEPISH (10 h)
 	\item Recopilación de consentimientos informados de posibles pacientes a incluir (5 h)
 	\end{enumerate}
-\item Conformación de base de datos (200 h)
+\item Conformación de base de datos (235 h)
 	\begin{enumerate}
 	\item Definición de criterios de inclusión en el proyecto (2 h)
 	\item Confección de listado de pacientes posibles (3 h)
 	\item Análisis de cumplimiento de criterios en listado de pacientes posibles (10 h)
 	\item Armado de nueva base de datos específica para el proyecto (10 h)
-	\item Recontorneo y replanificación de pacientes para incluir en base de datos (160 h)
-	\item Anonimización de base de datos (15 h)
-	\end{enumerate}
-\item Evaluación de requerimientos de hardware (5 h)
-	\begin{enumerate}
-	\item Análisis de necesidad de cluster externo en función de tamaño de la base de datos (5 h)
+	\item Recontorneo y replanificación de pacientes para incluir en base de datos (200 h)
+	\item Anonimización de base de datos (10 h)
 	\end{enumerate}
 \item Extracción de datos del TPS (50 h)
 	\begin{enumerate}
 	\item Estudio de formato de datos DICOM (10 h)
 	\item Desarrollo de código para la extracción de datos necesarios (CT, estructuras, DVH) (40 h)
 	\end{enumerate}
-\item Desarrollo de CNN (150 h)
+\item Desarrollo de CNN (110 h)
 	\begin{enumerate}
-	\item Definición de arquitectura de CNN (10 h)
-	\item Desarrollo de código para entrenamiento y validación de CNN (40 h)
-	\item Entrenamiento de CNN y optimización de hiperparámetros (100 h)
+	\item Definición de arquitectura de CNN (5 h)
+	\item Análisis de necesidad de \textit{cluster} externo en función de tamaño de la base de datos (5 h)
+	\item Desarrollo de código para entrenamiento y validación de CNN (30 h)
+	\item Entrenamiento de CNN y optimización de hiperparámetros (70 h)
 	\end{enumerate}
 \item Validación (60 h)
 	\begin{enumerate}
@@ -368,7 +364,7 @@ Los entregables del proyecto son :
 	\end{enumerate}
 \end{enumerate}
 
-Cantidad total de horas: 610 h.
+Cantidad total de horas: 600 h.
 
 \section{10. Diagrama de Activity On Node}
 \label{sec:AoN}
