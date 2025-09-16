@@ -1,37 +1,36 @@
 \documentclass[
 11pt, % The default document font size, options: 10pt, 11pt, 12pt
-%codirector, % Uncomment to add a codirector to the title page
+codirector, % Uncomment to add a codirector to the title page
 ]{charter} 
-
+\usepackage{float}
 
 % El títulos de la memoria, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \ttitle
-\titulo{Título del proyecto} 
+\titulo{Predicción de DVH en Radioterapia de Próstata mediante CNN} 
 
 % Nombre del posgrado, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \degreename
-\posgrado{Carrera de Especialización en Sistemas Embebidos} 
+%\posgrado{Carrera de Especialización en Sistemas Embebidos} 
 %\posgrado{Carrera de Especialización en Internet de las Cosas} 
-%\posgrado{Carrera de Especialización en Inteligencia Artificial}
+\posgrado{Carrera de Especialización en Inteligencia Artificial}
 %\posgrado{Maestría en Sistemas Embebidos} 
 %\posgrado{Maestría en Internet de las cosas}
 
 % Tu nombre, se puede usar el cualquier lugar del documento con el comando \authorname
 % IMPORTANTE: no omitir titulaciones ni tildación en los nombres, también se recomienda escribir los nombres completos (tal cual los tienen en su documento)
-\autor{Título y Nombre del autor}
+\autor{Ing. Natalia Mercedes Espector}
 
 % El nombre del director y co-director, se puede usar el cualquier lugar del documento con el comando \supname y \cosupname y \pertesupname y \pertecosupname
-\director{Título y Nombre del director}
-\pertenenciaDirector{pertenencia} 
-\codirector{} % para que aparezca en la portada se debe descomentar la opción codirector en los parámetros de documentclass
-\pertenenciaCoDirector{FIUBA}
+\director{Dr. Flavio Colavecchia}
+\pertenenciaDirector{Fundación INTECNUS / CNEA} 
+\codirector{Mgtr. Roy Lápera} % para que aparezca en la portada se debe descomentar la opción codirector en los parámetros de documentclass
+\pertenenciaCoDirector{Fundación INTECNUS}
 
 % Nombre del cliente, quien va a aprobar los resultados del proyecto, se puede usar con el comando \clientename y \empclientename
-\cliente{Nombre del cliente}
-\empresaCliente{Empresa del cliente}
+\cliente{Dra. Romina Ventimiglia}
+\empresaCliente{Fundación INTECNUS}
  
-\fechaINICIO{30 de abril de 2023}		%Fecha de inicio de la cursada de GdP \fechaInicioName
-\fechaFINALPlan{18 de junio de 2023} 	%Fecha de final de cursada de GdP
-\fechaFINALTrabajo{15 de mayo de 2024}	%Fecha de defensa pública del trabajo final
-
+\fechaINICIO{26 de agosto de 2025}		%Fecha de inicio de la cursada de GdP \fechaInicioName
+\fechaFINALPlan{15 de octubre de 2025} 	%Fecha de final de cursada de GdP
+\fechaFINALTrabajo{30 de junio de 2026}	%Fecha de defensa pública del trabajo final
 
 \begin{document}
 
@@ -59,7 +58,7 @@
 \rowcolor[HTML]{C0C0C0} 
 Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios realizados} & Fecha      \\ \hline
 0      & Creación del documento                                 &\fechaInicioName \\ \hline
-%1      & Se completa hasta el punto 5 inclusive                & {día} de {mes} de 202X \\ \hline
+1      & Se completa hasta el punto 5 inclusive                & {9} de {septiembre} de 2025 \\ \hline
 %2      & Se completa hasta el punto 9 inclusive
 %		  Se puede agregar algo más \newline
 %		  En distintas líneas \newline
@@ -85,7 +84,7 @@ Buenos Aires, \fechaInicioName
 
 \vspace{2cm}
 
-Por medio de la presente se acuerda con el \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'' y consistirá en \textcolor{red}{la implementación de un prototipo de un sistema de control de temperatura de una caldera industrial}. El trabajo tendrá un presupuesto preliminar estimado de \textcolor{red}{600} horas y un costo estimado de \textcolor{red}{\$ XXX}, con fecha de inicio el \fechaInicioName\hspace{1px} y fecha de presentación pública el \fechaFinalName.
+Por medio de la presente se acuerda con el \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'' y consistirá en la implementación de una red neuronal convolucional para la predicción de histogramas dosis-volumen en radioterapia de próstata, a partir de la tomografía computada de simulación y el contorneo de estructuras. El trabajo tendrá un presupuesto preliminar estimado de \textcolor{red}{600} horas y un costo estimado de \textcolor{red}{\$ 13400} dólares \textcolor{red}{(a ajustar en función de puntos 9 y 12)}, con fecha de inicio el \fechaInicioName\hspace{1px} y fecha de presentación pública el \fechaFinalName.
 
 Se adjunta a esta acta la planificación inicial.
 
@@ -102,148 +101,127 @@ Se adjunta a esta acta la planificación inicial.
 
 
 
-
 \section{1. Descripción técnica-conceptual del proyecto a realizar}
 \label{sec:descripcion}
 
-\begin{consigna}{red} % ELIMINAR \begin{consigna}{red} y \end{consigna}{red} en las secciones que vayan completando para cada entrega parcial.
-El objetivo es que el lector, en una o dos páginas, exponga de qué se trata el proyecto y cuáles son sus desafíos, cuál es la motivación para realizarlo y su importancia.
+La radioterapia es una técnica que permite tratar el cáncer con radiación de manera precisa y segura. Una de las etapas dentro del proceso de tratamiento es la tarea de planificación, que consiste en diseñar el tratamiento que se dispensará al paciente.
 
-Se debe introducir el contexto del proyecto, el estado del arte en la temática, describir la propuesta de valor, cuál es el problema que atiende y cuál es la solución que se propone. Se debe dar una descripción funcional de la solución que incluya un diagrama en bloques.
+En la actualidad, esto se realiza mediante el uso de un Sistema de Planificación de Tratamientos (TPS, del inglés \textit{Treatment Planning System}), un software dedicado para tal fin que cuenta con el modelado del haz de radiación del equipo de tratamiento (Acelerador Lineal), el algoritmo de cálculo y los diversos parámetros geométricos del equipo. 
 
-Puede ser útil incluir en esta sección la respuesta a alguna de estas preguntas:
+Se puede observar un esquema del flujo de trabajo para la planificación de un tratamiento de radioterapia en la Figura \ref{fig:FlujoTrabajo}. En una primera instancia, se adquiere una tomografía computada (CT, del inglés \textit{Computed Tomography}) de simulación de la zona a tratar. En esta etapa se define la posición en la que se ubicará el paciente durante las sesiones terapéuticas.
 
-\begin{itemize}
-	\item ¿Cuál es el contexto del proyecto, es un emprendimiento personal, un proyecto para una empresa, es parte del programa de vinculación con empresas del posgrado?
-	\item ¿Existen o aplican condiciones especiales al proyecto, financiamiento de algún programa público o privado, acuerdos de confidencialidad, acuerdos sobre la propiedad intelectual de los entregables u otros?
-	\item ¿Cómo se compara la solución propuesta con el estado del arte en el campo de aplicación? ¿En qué aspectos destaca?
-	\item ¿Ayuda a la explicación si se incluye un lienzo Canvas del Modelo de Negocio?
-	\item ¿En qué estado del ciclo de vida está la solución que se propone?
-	\item ¿Cuáles son las características del cliente (el adoptante de los entregables del proyecto) qué valora, qué necesita?
-	\item ¿Por dónde pasa la innovación?
-\end{itemize}
+\vspace{10px}
 
-La descripción técnica-conceptual \textbf{debe incluir al menos un diagrama en bloques del sistema} y descripción funcional de la solución propuesta.
-
-Las figuras se deben mencionar en el texto ANTES de que aparezcan con una frase como la siguiente: ``En la figura \ref{fig:diagBloques} se presenta el diagrama en bloques del sistema. Se observa que...''.  La regla es que las figuras nunca pueden ir antes de ser mencionadas en el texto, porque sino el lector no entiende por qué de pronto aparece una figura.
-
-\begin{figure}[htpb]
+\begin{figure}[H]
 \centering 
-\includegraphics[width=.65\textwidth]{./Figuras/diagBloques.png}
-\caption{Diagrama en bloques del sistema.}
-\label{fig:diagBloques}
+\includegraphics[width=1\textwidth]{./Figuras/Fig1-FlujoDeTrabajo.png}
+\caption{Flujo de trabajo de la planificación de un tratamiento de radioterapia.}
+\label{fig:FlujoTrabajo}
 \end{figure}
 
-\vspace{25px}
+\vspace{15px}
 
-El tamaño del texto en TODAS las figuras debe ser adecuado \textbf{para que NO pase lo que ocurre en la figura \ref{fig:diagBloques}}, donde el lector debe esforzarse para poder leer el texto. 
+Estas imágenes de tomografía se cargan en el TPS, donde el médico radioterapeuta dibuja las estructuras de interés: órganos de riesgo (OAR, del inglés \textit{Organs At Risk}) y volúmenes blanco a tratar. Además, el médico prescribe la dosis terapéutica y las dosis límite de los OARs. 
 
-Los colores usados en el diagrama deben ser adecuados, tal que ayuden a comprender mejor el diagrama. Se recomienda evitar colores primarios (como rojo, verde o cyan) y usar la gama de colores pastel.
+A partir de esta información, que es específica para cada paciente, el físico médico realiza la planificación del tratamiento. Ésta consiste en determinar los diversos parámetros del equipo, tales como energía, ángulos de incidencia, colimación, rotación del equipo e intensidad, con el objetivo de dispensar la dosis en el volumen blanco prescripta por el médico, minimizando la dosis en los tejidos sanos y cumpliendo con las restricciones indicadas para cada OAR.
 
-\end{consigna} % ELIMINAR \begin{consigna}{red} y \end{consigna}{red} en las secciones que vayan completando para cada entrega parcial.
+Usualmente, los tratamientos de próstata de alto riesgo (próstata + vesículas seminales + ganglios linfáticos) se realizan con la técnica VMAT (Terapia en Arco Modulada Volumétricamente), en la que el equipo gira en forma continua alrededor del paciente mientras dispensa el tratamiento. Para esta técnica se utiliza planificación inversa, que consiste en indicarle al planificador, mediante diversas funciones de costo, los objetivos dosimétricos en cuanto a cobertura del volumen blanco y restricciones de dosis de los OAR. A partir de éstas, el TPS ajusta los parámetros del equipo para lograr estos objetivos.
+
+La planificación de un tratamiento VMAT de próstata de alto riesgo es un proceso iterativo, que demanda una gran cantidad de tiempo y de recursos. En cada iteración, se analizan los resultados obtenidos y, en función de lo observado, se ajustan los diversos parámetros y las funciones de costo configuradas en el TPS. 
+
+El análisis del plan radica en la revisión de la distribución de dosis sobre el paciente (mediante curvas de isodosis) y en el análisis del DVH. Este último consiste en un histograma acumulado de la dosis en función del volumen para cada OAR (ej. recto y vejiga) y para los volúmenes a tratar (ej. próstata). Mediante su análisis, es posible verificar si las restricciones indicadas por el médico se cumplen (ej. dosis máxima, dosis media, un porcentaje de volumen con cierta dosis como máximo, etc). 
+
+Los resultados que se obtienen están asociados a los parámetros configurados para el tratamiento, pero dependerán en gran medida de la anatomía propia del paciente. Por ejemplo, para una configuración similar del tratamiento, si un paciente tiene la vejiga vacía recibirá más dosis que un paciente con la vejiga llena, ya que en el primer caso habrá más volumen de vejiga cercano a la zona a tratar.
+
+El objetivo de este trabajo consiste en lograr predecir el DVH que se obtendrá a partir de la imagen de tomografía del paciente y el contorneo de estructuras de interés. La predicción del DVH previa a la planificación de un tratamiento permitirá conocer de antemano los resultados posibles de obtener para ese paciente en base a su anatomía específica. Con esta información previa, se busca disminuir la cantidad de iteraciones que requiere el proceso, de manera de optimizar el tiempo y recursos invertidos en cada planificación de tratamiento. 
+
+En la Figura \ref{fig:DiagBloques} se observa el flujo de trabajo propuesto para cumplir con este objetivo. Se utilizarán redes neuronales convolucionales (CNN, del inglés \textit{Convolutional Neural Network}) preentrenadas, que tomen como entrada las imágenes de CT junto con los contornos de pacientes históricos, y como salida el DVH asociado al plan de tratamiento de ese caso. 
+
+\vspace{10px}
+
+\begin{figure}[!htpb]
+\centering 
+\includegraphics[width=1\textwidth]{./Figuras/Fig2-DiagramaBloques.png}
+\caption{Flujo de trabajo propuesto para la predicción de DVH utilizando CNN.}
+\label{fig:DiagBloques}
+\end{figure}
+
+\vspace{15px}
+
+En una primera etapa, será necesario realizar un análisis exhaustivo de la base de datos actual. Dado que los protocolos de tratamiento se actualizan de manera continua, se deberán estudiar y definir los criterios de selección para determinar los pacientes a incluir en este trabajo. En caso de que el volumen de datos no sea suficiente, se considerará la inclusión de pacientes tratados bajo protocolos previos, recontorneándolos y replanificándolos con el protocolo actual, de modo de homogenizar la base de datos y garantizar su utilidad para el entrenamiento.
+
+Una vez conformada la base de datos específica para este trabajo, se extraerán los datos del TPS y se procederá al entrenamiento del modelo basado en CNN. Se realizará un análisis bibliográfico para identificar la arquitectura más adecuada para la red, y se valorará el uso de técnicas de \textit{transfer learning} que permitan aprovechar modelos preentrenados. El desempeño del modelo se validará frente a nuevos datos mediante métricas cuantitativas que permitan evaluar objetivamente su capacidad predictiva. Finalmente, se documentará todo el trabajo realizado y se reportarán los resultados obtenidos.
 
 \section{2. Identificación y análisis de los interesados}
 \label{sec:interesados}
 
-\begin{consigna}{red} % ELIMINAR \begin{consigna}{red} y \end{consigna}{red} en las secciones que vayan completando para cada entrega parcial.
-\textbf{Nota importante:} borrar esto y todas las consignas en color rojo antes de entregar este documento). Esto se hace eliminando el par de comandos que forman el bloque consigna, \verb!\begin{consigna}{red}! y \verb!\end{consigna}{red}! del código. 
- 
-Es inusual que una misma persona esté en más de un rol, incluso en proyectos chicos. Si se considera que una persona cumple dos o más roles, entonces \textbf{solo dejarla en el rol más importante}. 
-
-Por ejemplo, si una persona es Cliente pero también colabora u orienta, dejarla solo como Cliente. Si una persona es el Responsable, \textbf{no debe ser colocado también como miembro del equipo}.
-
-
 \begin{table}[ht]
 %\caption{Identificación de los interesados}
 %\label{tab:interesados}
-\begin{tabularx}{\linewidth}{@{}|l|X|X|l|@{}}
+\begin{tabularx}{\linewidth}{@{}|l|>{\hsize=1\hsize}X|>{\hsize=0.6\hsize}X|>{\hsize=1.4\hsize}X|@{}}
 \hline
 \rowcolor[HTML]{C0C0C0} 
-Rol           & Nombre y Apellido & Organización 	& Puesto 	\\ \hline
-Auspiciante   &                   &              	&        	\\ \hline
-Cliente       & \clientename      &\empclientename	&        	\\ \hline
-Impulsor      &                   &              	&        	\\ \hline
-Responsable   & \authorname       & FIUBA        	& Alumno 	\\ \hline
-Colaboradores &                   &              	&        	\\ \hline
-Orientador    & \supname	      & \pertesupname 	& Director del Trabajo Final \\ \hline
-Equipo        & miembro1 \newline 
-				miembro2          &              	&        	\\ \hline
-Opositores    &                   &              	&        	\\ \hline
-Usuario final &                   &              	&        	\\ \hline
+Rol           & Nombre y Apellido  & Organización 	& Puesto 	\\ \hline
+Cliente       & \clientename       &\empclientename	& Responsable médica de Servicio de Radioterapia       	\\ \hline
+Impulsor      & Mgtr. Lara Negrin   &\empclientename 	& Responsable de Departamento de Investigación Traslacional       	\\ \hline
+Responsable   & \authorname        &\empclientename 	& Alumna 	\\ \hline
+Colaboradores & -                  &\empclientename 	& Equipo de médicas radioterapeutas, físicos médicos y técnicos dosimetristas del Servicio de Radioterapia       	\\ \hline
+Orientador 1  & \supname	       &\empclientename 	& Director del Trabajo Final \\ \hline
+Orientador 2  & Mgtr. Roy Lápera   &\empclientename 	& Codirector del Trabajo Final \\ \hline
+Usuario final & Lic. Fernando Lisa &\empclientename	& Responsable físico de Servicio de Radioterapia       	\\ \hline
 \end{tabularx}
 \end{table}
 
-El Director suele ser uno de los orientadores.
-
-No dejar celdas vacías; si no hay nada que poner en una celda colocar un signo ``-''.
-
-No dejar filas vacías; si no hay nada que poner en una fila entonces eliminarla.
-
-Es deseable listar a continuación las principales características de cada interesado.
- 
-Por ejemplo:
 \begin{itemize}
-	\item Orientador: la Dra. Ing. María Gómez es experta en la temática y va a ayudar con la definición de los requerimientos y el desarrollo del firmware del embebido.
-	\item Auspiciante: es riguroso y exigente con la rendición de gastos. Tener mucho cuidado con esto.
-	\item Equipo: Juan Perez, suele pedir licencia porque tiene un familiar con una enfermedad. Planificar considerando esto.
+	\item Cliente: es la responsable médica del servicio. Valora la optimización del tiempo que transcurre entre la admisión del paciente y el inicio del tratamiento, sin afectar la calidad.
+	\item Impulsor: responsable del Departamento de Investigación Traslacional. Valora la investigación, el desarrollo y las actividades académicas en la institución. Además, puede asistir en la presentación del trabajo al Comité de Docencia e Investigación (CDI) de la institución, y al Comité de Evaluación Ética de Proyectos de Investigación en Salud Humana (CEEPISH) de la provincia de Río Negro. 
+	\item Colaboradores: el equipo de médicas radioterapeutas, físicos médicos y técnicos dosimetristas del servicio de Radioterapia, que asistirán en el recontorneo y replanificación de los pacientes que se requieran para incluir en la base de datos.
+	\item Orientador 1: forma parte del Departamento de Investigación Traslacional, y trabaja en la aplicación de tecnologías computacionales avanzadas en salud. Se especializa en el ámbito del procesamiento de imágenes médicas y física médica computacional, y tiene amplia experiencia en docencia y en dirección de trabajos finales de carrera.
+	\item Orientador 2: tiene amplia experiencia como físico médico en el servicio de Radioterapia. Además, tiene formación en el ámbito de la ciencia de datos y la inteligencia artificial, por lo que puede aportar tanto en esas áreas como desde el conocimiento del dominio.
+	\item Usuario final: es el responsable físico del servicio de Radioterapia. Es quien podrá determinar la utilidad y la aplicabilidad de este proyecto en el flujo clínico. Deben incluirse también como usuarios finales el resto del equipo de físicos médicos especialistas en radioterapia y técnicos dosimetristas.
 \end{itemize}
-
-\end{consigna} % ELIMINAR \begin{consigna}{red} y \end{consigna}{red} en las secciones que vayan completando para cada entrega parcial.
 
 
 \section{3. Propósito del proyecto}
 \label{sec:proposito}
 
-\begin{consigna}{red} % ELIMINAR \begin{consigna}{red} y \end{consigna}{red} en las secciones que vayan completando para cada entrega parcial.
-
-¿Por qué se hace el proyecto? ¿Qué se quiere lograr? 
-
-Se recomienda que sea solo un párrafo que continúe con la idea de la frase ``el propósito de este proyecto es...'' (omitir la frase, ya que está en el título de la sección).
-\end{consigna}
+Este proyecto tiene como objetivo predecir el DVH de los OAR de una planificación de un tratamiento de radioterapia de próstata, a partir de las imágenes de la tomografía de simulación de un paciente y del contorneo de estructuras de interés. Contar con esta predicción previa a comenzar la planificación permitirá optimizar el tiempo y recursos invertidos en esta etapa. Esto contribuirá a reducir el tiempo que transcurre entre la CT de planificación y el inicio del tratamiento, lo cual es especialmente crítico en el contexto clínico.
 
 \section{4. Alcance del proyecto}
 \label{sec:alcance}
 
-\begin{consigna}{red}
-¿Qué se incluye y que no se incluye en este proyecto?
-
-Se refiere al trabajo que se va a hacer para entregar el producto o resultado especificado. 
-
-Explicitar todo lo quede comprendido dentro del alcance del proyecto. Por ejemplo:
-
-El proyecto incluye:
+El alcance del proyecto incluye:
 \begin{itemize}
-	\item Ítem 1.
-	\item Ítem 2.
-		\begin{itemize}
-		\item Subítem 1.
-		\item Subítem 2.
-		\item ...
-		\end{itemize}
-	\item ...
+	\item Ingeniería de datos: análisis exhaustivo de la base de datos actual, definición de criterios de inclusión y exclusión, recontorneo de estructuras y replanificación de tratamientos en casos específicos, anonimización de los datos, conformación de la base de datos específica del proyecto, extracción y procesamiento de datos del TPS.
+	\item Revisión bibliográfica: estudio del estado del arte en predicción de DVH, arquitecturas de redes convolucionales y técnicas de transfer learning aplicadas al ámbito de la radioterapia.
+	\item Implementación de modelos: propuesta de la arquitectura de la CNN, entrenamiento y optimización del modelo, ajuste de hiperparámetros, exploración del impacto de distintas configuraciones de entrada (CT, contornos, combinaciones).
+	\item Evaluación del desempeño: validación del modelo con nuevo conjunto de casos, análisis de métricas cuantitativas de desempeño, comparación con resultados reportados en la bibliografía.
+	\item Documentación y reporte: registro detallado del proceso, justificación de decisiones técnicas y presentación de resultados intermedios y finales.
 	
 \end{itemize}
 
-Explicitar además todo lo que no quede incluido (``El presente proyecto no incluye...'')
-
-\end{consigna} % ELIMINAR \begin{consigna}{red} y \end{consigna}{red} en las secciones que vayan completando para cada entrega parcial.
+A su vez, el alcance no incluye:
+\begin{itemize}
+	\item Integración ni implementación del modelo en el flujo clínico actual.
+	\item Validación prospectiva en pacientes en curso de tratamiento.
+	
+\end{itemize}
 
 
 \section{5. Supuestos del proyecto}
 \label{sec:supuestos}
 
-\begin{consigna}{red} % ELIMINAR \begin{consigna}{red} y \end{consigna}{red} en las secciones que vayan completando para cada entrega parcial.
-``Para el desarrollo del presente proyecto se supone que: ...''
+Para el desarrollo del presente proyecto se asume:
 
 \begin{itemize}
-	\item Supuesto 1.
-	\item Supuesto 2.
-	\item ...
+	\item Disponibilidad de tiempo: se contará con el tiempo suficiente para llevar adelante las distintas etapas del proyecto dentro del ámbito laboral, considerando las limitaciones propias de la práctica clínica y la necesidad de compatibilizar las actividades asistenciales con las de investigación.
+	\item Recursos humanos: se dispondrá del equipo interdisciplinario necesario (médicos radioterapeutas, físicos médicos y técnicos dosimetristas) para realizar el recontorneo y/o la replanificación de los casos requeridos en la construcción de la base de datos.
+	\item Recursos materiales y tecnológicos: se dispondrá de los recursos computacionales adecuados, incluyendo acceso a hardware especializado (por ejemplo, GPU de alto rendimiento) para el entrenamiento y la validación de los modelos de redes neuronales.
+	\item Apoyo institucional: se contará con el respaldo de la institución en lo relativo al acceso a datos clínicos anonimizados, la utilización de infraestructura y la promoción del desarrollo de herramientas basadas en inteligencia artificial en el ámbito de la radioterapia.
+	\item Disponibilidad y calidad de los datos: los datos extraídos del TPS y de los sistemas de registro se encontrarán completos, consistentes y con la calidad suficiente para permitir su utilización en el entrenamiento del modelo.
+	\item Cumplimiento normativo y ético: el proyecto se desarrollará en conformidad con las normativas vigentes en materia de ética en investigación clínica y protección de datos personales, garantizando la anonimización y el resguardo de la información de los pacientes.
 \end{itemize}
 
-Por ejemplo, se podrían incluir supuestos respecto a disponibilidad de tiempo y recursos humanos y materiales, sobre la factibilidad técnica de distintos aspectos del proyecto, sobre otras cuestiones que sean necesarias para el éxito del proyecto como condiciones macroeconómicas o reglamentarias.
-
-\end{consigna} % ELIMINAR \begin{consigna}{red} y \end{consigna}{red} en las secciones que vayan completando para cada entrega parcial.
 
 \section{6. Requerimientos}
 \label{sec:requerimientos}
