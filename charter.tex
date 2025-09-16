@@ -5,7 +5,7 @@ codirector, % Uncomment to add a codirector to the title page
 \usepackage{float}
 
 % El títulos de la memoria, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \ttitle
-\titulo{Predicción de DVH en Radioterapia de Próstata mediante CNN} 
+\titulo{Predicción de histograma dosis-volumen en radioterapia de próstata mediante redes neuronales convolucionales} 
 
 % Nombre del posgrado, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \degreename
 %\posgrado{Carrera de Especialización en Sistemas Embebidos} 
@@ -21,7 +21,7 @@ codirector, % Uncomment to add a codirector to the title page
 % El nombre del director y co-director, se puede usar el cualquier lugar del documento con el comando \supname y \cosupname y \pertesupname y \pertecosupname
 \director{Dr. Flavio Colavecchia}
 \pertenenciaDirector{Fundación INTECNUS / CNEA} 
-\codirector{Mgtr. Roy Lápera} % para que aparezca en la portada se debe descomentar la opción codirector en los parámetros de documentclass
+\codirector{Mg. Roy Lápera} % para que aparezca en la portada se debe descomentar la opción codirector en los parámetros de documentclass
 \pertenenciaCoDirector{Fundación INTECNUS}
 
 % Nombre del cliente, quien va a aprobar los resultados del proyecto, se puede usar con el comando \clientename y \empclientename
@@ -30,7 +30,7 @@ codirector, % Uncomment to add a codirector to the title page
  
 \fechaINICIO{26 de agosto de 2025}		%Fecha de inicio de la cursada de GdP \fechaInicioName
 \fechaFINALPlan{15 de octubre de 2025} 	%Fecha de final de cursada de GdP
-\fechaFINALTrabajo{30 de junio de 2026}	%Fecha de defensa pública del trabajo final
+\fechaFINALTrabajo{junio de 2026}	%Fecha de defensa pública del trabajo final
 
 \begin{document}
 
@@ -59,7 +59,7 @@ codirector, % Uncomment to add a codirector to the title page
 Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios realizados} & Fecha      \\ \hline
 0      & Creación del documento                                 &\fechaInicioName \\ \hline
 1      & Se completa hasta el punto 5 inclusive                & {9} de {septiembre} de 2025 \\ \hline
-%2      & Se completa hasta el punto 9 inclusive
+2      & Se completa hasta el punto 9 inclusive				   & {16} de {septiembre} de 2025 \\ \hline
 %		  Se puede agregar algo más \newline
 %		  En distintas líneas \newline
 %		  Así                                                    & {día} de {mes} de 202X \\ \hline
@@ -84,7 +84,7 @@ Buenos Aires, \fechaInicioName
 
 \vspace{2cm}
 
-Por medio de la presente se acuerda con el \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'' y consistirá en la implementación de una red neuronal convolucional para la predicción de histogramas dosis-volumen en radioterapia de próstata, a partir de la tomografía computada de simulación y el contorneo de estructuras. El trabajo tendrá un presupuesto preliminar estimado de \textcolor{red}{600} horas y un costo estimado de \textcolor{red}{\$ 13400} dólares \textcolor{red}{(a ajustar en función de puntos 9 y 12)}, con fecha de inicio el \fechaInicioName\hspace{1px} y fecha de presentación pública el \fechaFinalName.
+Por medio de la presente se acuerda con el \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'' y consistirá en la implementación de una red neuronal convolucional para la predicción de histogramas dosis-volumen en radioterapia de próstata, a partir de la tomografía computada de simulación y el contorneo de estructuras. El trabajo tendrá un presupuesto preliminar estimado de \textcolor{red}{600} horas y un costo estimado de \textcolor{red}{\$ 13400} dólares \textcolor{red}{(a ajustar en función de puntos 9 y 12)}, con fecha de inicio el \fechaInicioName\hspace{1px} y fecha de presentación pública en el mes de \fechaFinalName.
 
 Se adjunta a esta acta la planificación inicial.
 
@@ -108,7 +108,7 @@ La radioterapia es una técnica que permite tratar el cáncer con radiación de 
 
 En la actualidad, esto se realiza mediante el uso de un Sistema de Planificación de Tratamientos (TPS, del inglés \textit{Treatment Planning System}), un software dedicado para tal fin que cuenta con el modelado del haz de radiación del equipo de tratamiento (Acelerador Lineal), el algoritmo de cálculo y los diversos parámetros geométricos del equipo. 
 
-Se puede observar un esquema del flujo de trabajo para la planificación de un tratamiento de radioterapia en la Figura \ref{fig:FlujoTrabajo}. En una primera instancia, se adquiere una tomografía computada (CT, del inglés \textit{Computed Tomography}) de simulación de la zona a tratar. En esta etapa se define la posición en la que se ubicará el paciente durante las sesiones terapéuticas.
+Se puede observar un esquema del flujo de trabajo para la planificación de un tratamiento de radioterapia en la figura \ref{fig:FlujoTrabajo}. En una primera instancia, se adquiere una tomografía computada (CT, del inglés \textit{Computed Tomography}) de simulación de la zona a tratar. En esta etapa se define la posición en la que se ubicará el paciente durante las sesiones terapéuticas.
 
 \vspace{10px}
 
@@ -135,7 +135,7 @@ Los resultados que se obtienen están asociados a los parámetros configurados p
 
 El objetivo de este trabajo consiste en lograr predecir el DVH que se obtendrá a partir de la imagen de tomografía del paciente y el contorneo de estructuras de interés. La predicción del DVH previa a la planificación de un tratamiento permitirá conocer de antemano los resultados posibles de obtener para ese paciente en base a su anatomía específica. Con esta información previa, se busca disminuir la cantidad de iteraciones que requiere el proceso, de manera de optimizar el tiempo y recursos invertidos en cada planificación de tratamiento. 
 
-En la Figura \ref{fig:DiagBloques} se observa el flujo de trabajo propuesto para cumplir con este objetivo. Se utilizarán redes neuronales convolucionales (CNN, del inglés \textit{Convolutional Neural Network}) preentrenadas, que tomen como entrada las imágenes de CT junto con los contornos de pacientes históricos, y como salida el DVH asociado al plan de tratamiento de ese caso. 
+En la figura \ref{fig:DiagBloques} se observa el flujo de trabajo propuesto para cumplir con este objetivo. Se utilizarán redes neuronales convolucionales (CNN, del inglés \textit{Convolutional Neural Network}) preentrenadas, que tomen como entrada las imágenes de CT junto con los contornos de pacientes históricos, y como salida el DVH asociado al plan de tratamiento de ese caso. 
 
 \vspace{10px}
 
@@ -163,11 +163,11 @@ Una vez conformada la base de datos específica para este trabajo, se extraerán
 \rowcolor[HTML]{C0C0C0} 
 Rol           & Nombre y Apellido  & Organización 	& Puesto 	\\ \hline
 Cliente       & \clientename       &\empclientename	& Responsable médica de Servicio de Radioterapia       	\\ \hline
-Impulsor      & Mgtr. Lara Negrin   &\empclientename 	& Responsable de Departamento de Investigación Traslacional       	\\ \hline
+Impulsor      & Mg. Lara Negrin   &\empclientename 	& Responsable de Departamento de Investigación Traslacional       	\\ \hline
 Responsable   & \authorname        &\empclientename 	& Alumna 	\\ \hline
 Colaboradores & -                  &\empclientename 	& Equipo de médicas radioterapeutas, físicos médicos y técnicos dosimetristas del Servicio de Radioterapia       	\\ \hline
 Orientador 1  & \supname	       &\empclientename 	& Director del Trabajo Final \\ \hline
-Orientador 2  & Mgtr. Roy Lápera   &\empclientename 	& Codirector del Trabajo Final \\ \hline
+Orientador 2  & Mg. Roy Lápera   &\empclientename 	& Codirector del Trabajo Final \\ \hline
 Usuario final & Lic. Fernando Lisa &\empclientename	& Responsable físico de Servicio de Radioterapia       	\\ \hline
 \end{tabularx}
 \end{table}
@@ -226,110 +226,149 @@ Para el desarrollo del presente proyecto se asume:
 \section{6. Requerimientos}
 \label{sec:requerimientos}
 
-\begin{consigna}{red} % ELIMINAR \begin{consigna}{red} y \end{consigna}{red} en las secciones que vayan completando para cada entrega parcial.
-Los requerimientos deben enumerarse y de ser posible estar agrupados por afinidad, por ejemplo:
-
 \begin{enumerate}
 	\item Requerimientos funcionales:
 		\begin{enumerate}
-			\item El sistema debe...
-			\item Tal componente debe...
-			\item El usuario debe poder...
+			\item El sistema deberá recibir la CT del paciente y las estructuras de interés y debe devolver el DVH predicho.
+			\item El modelo deberá ser accesible desde la estación de trabajo del TPS.
+			\item La predicción deberá realizarse en un tiempo corto (del orden de minutos).
+		\end{enumerate}
+	\item Requerimientos de datos:
+		\begin{enumerate}
+			\item El sistema será entrenado con tratamientos de pacientes realizados en la institución.
+			\item Se trabajará con datos anonimizados y se garantizará el resguardo de la información de los pacientes.
+			\item Se deberá contar con la información completa para el entrenamiento, que comprende: CT de planificación, contorneo de estructuras de interés y DVH.
+		\end{enumerate}
+	\item Requerimientos no funcionales:
+		\begin{enumerate}
+			\item Los pacientes incluidos en este proyecto deben haber dado su consentimiento para el uso de sus datos para fines académicos y de investigación.
+			\item El uso de imágenes, planificaciones, y datos de pacientes retrospectivos para este proyecto deberá ser evaluado y aprobado por el Comité de Evaluación Ética de Proyectos de Investigación en Salud Humana (CEEPISH) de la provincia de Río Negro.
+			\item El proyecto deberá ser evaluado y aprobado por el Comité de Docencia e Investigación (CDI) de la institución.
 		\end{enumerate}
 	\item Requerimientos de documentación:
 		\begin{enumerate}
-			\item Requerimiento 1.
-			\item Requerimiento 2 (prioridad menor)
+			\item Se elaborará un informe detallado del trabajo realizado, incluyendo el procesamiento de los datos, la arquitectura de la red, el proceso de entrenamiento y el análisis de los resultados.
+			\item Se confeccionará un instructivo para el uso de la red entrenada y la interpretación de la predicción.
 		\end{enumerate}
-	\item Requerimiento de testing...
-	\item Requerimientos de la interfaz...
-	\item Requerimientos interoperabilidad...
-	\item etc...
+	\item Requerimientos de \textit{testing}:
+		\begin{enumerate}
+			\item Se compararán los resultados de la predicción con los resultados de casos que no hayan sido utilizados en el entrenamiento.
+			\item Se contrastarán los resultados obtenidos con los reportados en la bibliografía.
+			\item Se valorará el tiempo requerido para la planificación con y sin la implementación del modelo en conjunto con el usuario.
+		\end{enumerate}
+	
 \end{enumerate}
-
-Leyendo los requerimientos se debe poder interpretar cómo será el proyecto y su funcionalidad.
-
-Indicar claramente cuál es la prioridad entre los distintos requerimientos y si hay requerimientos opcionales. 
-
-\textbf{¡¡¡No olvidarse de que los requerimientos incluyen a las regulaciones y normas vigentes!!!}
-
-Y al escribirlos seguir las siguientes reglas:
-\begin{itemize}
-	\item Ser breve y conciso (nadie lee cosas largas). 
-	\item Ser específico: no dejar lugar a confusiones.
-	\item Expresar los requerimientos en términos que sean cuantificables y medibles.
-\end{itemize}
-
-\end{consigna} % ELIMINAR \begin{consigna}{red} y \end{consigna}{red} en las secciones que vayan completando para cada entrega parcial.
 
 \section{7. Historias de usuarios (\textit{Product backlog})}
 \label{sec:backlog}
 
-\begin{consigna}{red}
-Descripción: en esta sección se deben incluir las historias de usuarios y su ponderación (\textit{history points}). Recordar que las historias de usuarios son descripciones cortas y simples de una característica contada desde la perspectiva de la persona que desea la nueva capacidad, generalmente un usuario o cliente del sistema. La ponderación es un número entero que representa el tamaño de la historia comparada con otras historias de similar tipo.
+A continuación, se analizarán tres historias de usuario, que describen en forma simple qué necesitan distintos interesados desde su rol y con qué objetivo. Cada una de estas historias se evaluará según tres dimensiones: dificultad (cantidad de trabajo estimado), complejidad (nivel técnico) e incertidumbre (riesgo o novedad). El puntaje se asignará según el siguiente criterio:
 
-Se debe indicar explícitamente el criterio para calcular los \textit{story points} de cada historia.
+\vspace{10px}
 
-El formato propuesto es: 
-\begin{enumerate}
-\item ``Como [rol] quiero [tal cosa] para [tal otra cosa]."
+\begin{table}[ht]
+\centering
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{0.85\linewidth}{@{}|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|@{}}
+\hline
+\rowcolor[HTML]{C0C0C0}
+Criterio      & Baja & Media & Alta \\ \hline
+Dificultad    & 1    & 3     & 5    \\ \hline
+Complejidad   & 1    & 5     & 8    \\ \hline
+Incertidumbre & 1    & 3     & 5    \\ \hline
+\end{tabularx}
+\end{table}
 
-\textit{Story points}: 8 (complejidad: 3, dificultad: 2, incertidumbre: 3)
-\end{enumerate}
-\end{consigna}
+
+\vspace{10px}
+
+Finalmente, para obtener el total de \textit{story points} se sumarán los valores de las tres dimensiones, y se redondeará el total al número superior más próximo de la serie de Fibonacci.
+
+\begin{itemize}
+\item Historia 1: Como responsable del servicio de radioterapia, busco optimizar el tiempo invertido en todas las etapas del proceso, para minimizar el tiempo transcurrido entre la admisión del paciente y el inicio de su tratamiento.
+
+\textit{Story points}: 21 (dificultad: 5, complejidad: 8, incertidumbre: 5, total: 18)
+
+\item Historia 2: Como médico radioterapeuta, me gustaría saber si la prescripción de dosis indicada es viable, para decidir si debe repetirse la tomografía de planificación modificando la preparación del paciente.
+
+\textit{Story points}: 13 (dificultad: 3, complejidad: 5, incertidumbre: 3, total: 11)
+
+\item Historia 3: Como físico médico, quiero conocer el resultado posible de un plan para determinar los mejores parámetros a utilizar en la planificación del tratamiento y reducir la cantidad de iteraciones necesarias.
+
+\textit{Story points}: 21 (dificultad: 5, complejidad: 8, incertidumbre: 3, total: 16)
+\end{itemize}
+
 
 \section{8. Entregables principales del proyecto}
 \label{sec:entregables}
 
-\begin{consigna}{red}
-Los entregables del proyecto son (ejemplo):
+Los entregables del proyecto son :
 
 \begin{itemize}
-	\item Manual de usuario.
-	\item Diagrama de circuitos esquemáticos.
-	\item Código fuente del firmware.
-	\item Diagrama de instalación.
+	\item Documento de planificación del proyecto.
+	\item Base de datos anonimizada y procesada.
+	\item Repositorio del código desarrollado.
+	\item Instructivo de uso de la red entrenada.
 	\item Memoria del trabajo final.
-	\item etc...
+	\item Presentación final
 \end{itemize}
-\end{consigna}
 
 \section{9. Desglose del trabajo en tareas}
 \label{sec:wbs}
 
-\begin{consigna}{red}
-El WBS debe tener relación directa o indirecta con los requerimientos.  Son todas las actividades que se harán en el proyecto para dar cumplimiento a los requerimientos. Se recomienda mostrar el WBS mediante una lista indexada:
-
 \begin{enumerate}
-\item Grupo de tareas 1 (suma h)
+\item Análisis bibliográfico (40 h)
 	\begin{enumerate}
-	\item Tarea 1 (tantas h)
-	\item Tarea 2 (tantas h)
-	\item Tarea 3 (tantas h)
+	\item Búsqueda y análisis de bibliografía sobre predicción de DVH (20 h)
+	\item Búsqueda y análisis de bibliografía sobre arquitecturas de CNN y \textit{transfer learning} (20 h)
 	\end{enumerate}
-\item Grupo de tareas 2 (suma h)
+\item Cumplimiento de requerimientos normativos y éticos (25 h)
 	\begin{enumerate}
-	\item Tarea 1 (tantas h)
-	\item Tarea 2 (tantas h)
-	\item Tarea 3 (tantas h)
+	\item Presentación del proyecto a CDI institucional (10 h)
+	\item Confección de documentación para presentación a CEEPISH (10 h)
+	\item Recopilación de consentimientos informados de posibles pacientes a incluir (5 h)
 	\end{enumerate}
-\item Grupo de tareas 3 (suma h)
+\item Conformación de base de datos (200 h)
 	\begin{enumerate}
-	\item Tarea 1 (tantas h)
-	\item Tarea 2 (tantas h)
-	\item Tarea 3 (tantas h)
-	\item Tarea 4 (tantas h)
-	\item Tarea 5 (tantas h)
+	\item Definición de criterios de inclusión en el proyecto (2 h)
+	\item Confección de listado de pacientes posibles (3 h)
+	\item Análisis de cumplimiento de criterios en listado de pacientes posibles (10 h)
+	\item Armado de nueva base de datos específica para el proyecto (10 h)
+	\item Recontorneo y replanificación de pacientes para incluir en base de datos (160 h)
+	\item Anonimización de base de datos (15 h)
+	\end{enumerate}
+\item Evaluación de requerimientos de hardware (5 h)
+	\begin{enumerate}
+	\item Análisis de necesidad de cluster externo en función de tamaño de la base de datos (5 h)
+	\end{enumerate}
+\item Extracción de datos del TPS (50 h)
+	\begin{enumerate}
+	\item Estudio de formato de datos DICOM (10 h)
+	\item Desarrollo de código para la extracción de datos necesarios (CT, estructuras, DVH) (40 h)
+	\end{enumerate}
+\item Desarrollo de CNN (150 h)
+	\begin{enumerate}
+	\item Definición de arquitectura de CNN (10 h)
+	\item Desarrollo de código para entrenamiento y validación de CNN (40 h)
+	\item Entrenamiento de CNN y optimización de hiperparámetros (100 h)
+	\end{enumerate}
+\item Validación (60 h)
+	\begin{enumerate}
+	\item Evaluación de red con datos de test (20 h)
+	\item Análisis de métricas y resultados obtenidos (30 h)
+	\item Comparación con resultados reportados en la bibliografía (10 h)
+	\end{enumerate}
+\item Documentación final (80 h)
+	\begin{enumerate}
+	\item Elaboración de instructivo de uso (10 h)
+	\item Revisión de repositorio de código desarrollado y documentación del código (10 h)
+	\item Elaboración de informes de avance (10 h)
+	\item Elaboración de memoria de trabajo final (40 h)
+	\item Confección de presentación final (10 h)
 	\end{enumerate}
 \end{enumerate}
 
-Cantidad total de horas: tantas.
-
-\textbf{¡Importante!:} la unidad de horas es h y va separada por espacio del número. Es incorrecto escribir ``23hs".
-
-\textbf{Se recomienda que no haya ninguna tarea que lleve más de 40 h.} De ser así se recomienda dividirla en tareas de menor duración.
-
-\end{consigna}
+Cantidad total de horas: 610 h.
 
 \section{10. Diagrama de Activity On Node}
 \label{sec:AoN}
