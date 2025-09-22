@@ -334,7 +334,7 @@ Los entregables del proyecto son:
 	\item Confección de documentación para presentación a CEEPISH (10 h)
 	\item Recopilación de consentimientos informados de posibles pacientes a incluir (5 h)
 	\end{enumerate}
-\item Conformación de base de datos (230 h)
+\item Conformación de base de datos (220 h)
 	\begin{enumerate}
 	\item Definición de criterios de inclusión en el proyecto (2 h)
 	\item Confección de listado de pacientes posibles (3 h)
@@ -345,12 +345,12 @@ Los entregables del proyecto son:
 	\item Revisión médica y corrección de estructuras post autocontorneo (40 h)
 	\item Replanificación de pacientes post revisión médica (40 h)
 	\item Revisión y ajustes finales de planes para incluir en base de datos (40 h)
-	\item Anonimización de base de datos (10 h)
 	\end{enumerate}
 \newpage 
-\item Extracción de datos del TPS (40 h)
+\item Extracción de datos del TPS (50 h)
 	\begin{enumerate}
 	\item Estudio de formato de datos DICOM (10 h)
+	\item Anonimización de base de datos (10 h)
 	\item Desarrollo de código para la extracción de datos necesarios (CT, estructuras, DVH) (30 h)
 	\end{enumerate}
 \item Desarrollo de CNN (100 h)
@@ -391,19 +391,23 @@ En la figura \ref{fig:AoN} se presenta el diagrama \textit{Activity On Node} (Ao
 	\item Los bordes y flechas más gruesos indican el camino crítico.
 \end{itemize}
 
-\begin{figure}[htpb]
+\begin{figure}[H]
 \centering 
-\includegraphics[width=.7\textwidth]{./Figuras/ActivityOnNode.png}
+\includegraphics[width=.65\textwidth]{./Figuras/ActivityOnNode.png}
 \caption{Diagrama de \textit{Activity on Node}.}
 \label{fig:AoN}
 \end{figure}
 
-A partir del diagrama, se puede observar que el camino crítico de este proyecto es de 540 h, en comparación con las 610 h propuestas originalmente. El camino crítico asume la posibilidad de realizar ciertas tareas en paralelo, lo cual podría lograrse asignando más recursos humanos al proyecto.
+A partir del diagrama, se puede observar que el camino crítico de este proyecto es de 530 h, en comparación con las 610 h propuestas originalmente. El camino crítico asume la posibilidad de realizar ciertas tareas en paralelo, lo cual podría lograrse asignando más recursos humanos al proyecto.
  
 
 
 \section{11. Diagrama de Gantt}
 \label{sec:gantt}
+
+En las figuras \ref{fig:diagGantt1} y \ref{fig:diagGantt2} se presentan el listado de actividades con su respectiva duración y el diagrama de Gantt. La fecha de inicio fue ajustada para que la tarea de elaboración de la planificación concluya en la misma fecha de finalización de la materia Gestión de Proyectos. A su vez, el diagrama fue configurado considerando una jornada parcial (4 horas diarias, de lunes a viernes) con el fin de reflejar la dedicación prevista para el proyecto dentro del horario laboral.
+
+\vspace{10px}
 
 \begin{figure}[htpb]
 \centering 
@@ -415,7 +419,7 @@ A partir del diagrama, se puede observar que el camino crítico de este proyecto
 \begin{landscape}
 \begin{figure}[htpb]
 \centering 
-\includegraphics[height=.7\textheight]{./Figuras/Fig5-Gantt.png}
+\includegraphics[height=.75\textheight]{./Figuras/Fig5-Gantt.png}
 \caption{Diagrama de Gantt.} %Modificar este título acorde.
 \label{fig:diagGantt2}
 \end{figure}
@@ -438,6 +442,7 @@ Descripción &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor total} \\ \hline
 Horas de ingeniería & 610 h & \$ 12 & \$ 7320 \\ \hline
 Horas de profesionales médicos & 80 h & \$ 30 & \$ 2400 \\ \hline
+Horas de cómputo (GPU) & 150 h & \$ 0 & \$ 0 \\ \hline
 
 \multicolumn{3}{|c|}{SUBTOTAL} &
   \multicolumn{1}{c|}{\$ 9720} \\ \hline
