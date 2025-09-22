@@ -84,7 +84,7 @@ Buenos Aires, \fechaInicioName
 
 \vspace{2cm}
 
-Por medio de la presente se acuerda con el \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'' y consistirá en la implementación de una red neuronal convolucional para la predicción de histogramas dosis-volumen en radioterapia de próstata, a partir de la tomografía computada de simulación y el contorneo de estructuras. El trabajo tendrá un presupuesto preliminar estimado de 600 horas y un costo estimado de \textcolor{red}{\$ 13400} dólares \textcolor{red}{(a ajustar en función de punto 12)}, con fecha de inicio el \fechaInicioName\hspace{1px} y fecha de presentación pública en el mes de \fechaFinalName.
+Por medio de la presente se acuerda con el \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'' y consistirá en la implementación de una red neuronal convolucional para la predicción de histogramas dosis-volumen en radioterapia de próstata, a partir de la tomografía computada de simulación y el contorneo de estructuras. El trabajo tendrá un presupuesto preliminar estimado de 610 horas y un costo estimado de \textcolor{red}{\$ 13400} dólares \textcolor{red}{(a ajustar en función de punto 12)}, con fecha de inicio el \fechaInicioName\hspace{1px} y fecha de presentación pública en el mes de \fechaFinalName.
 
 Se adjunta a esta acta la planificación inicial.
 
@@ -245,6 +245,7 @@ Para el desarrollo del presente proyecto se asume:
 			\item El uso de imágenes, planificaciones, y datos de pacientes retrospectivos para este proyecto deberá ser evaluado y aprobado por el Comité de Evaluación Ética de Proyectos de Investigación en Salud Humana (CEEPISH) de la provincia de Río Negro.
 			\item El proyecto deberá ser evaluado y aprobado por el Comité de Docencia e Investigación (CDI) de la institución.
 		\end{enumerate}
+\newpage 
 	\item Requerimientos de documentación:
 		\begin{enumerate}
 			\item Se elaborará un informe detallado del trabajo realizado, incluyendo el procesamiento de los datos, la arquitectura de la red, el proceso de entrenamiento y el análisis de los resultados.
@@ -285,15 +286,15 @@ Incertidumbre & 1    & 3     & 5    \\ \hline
 Finalmente, para obtener el total de \textit{story points} se sumarán los valores de las tres dimensiones, y se redondeará el total al número superior más próximo de la serie de Fibonacci.
 
 \begin{itemize}
-\item Historia 1: Como responsable del servicio de radioterapia, busco optimizar el tiempo invertido en todas las etapas del proceso, para minimizar el tiempo transcurrido entre la admisión del paciente y el inicio de su tratamiento.
+\item Historia 1: como responsable del servicio de radioterapia, busco optimizar el tiempo invertido en todas las etapas del proceso, para minimizar el tiempo transcurrido entre la admisión del paciente y el inicio de su tratamiento.
 
 \textit{Story points}: 21 (dificultad: 5, complejidad: 8, incertidumbre: 5, total: 18)
 
-\item Historia 2: Como médico radioterapeuta, me gustaría saber si la prescripción de dosis indicada es viable, para decidir si debe repetirse la tomografía de planificación modificando la preparación del paciente.
+\item Historia 2: como médico radioterapeuta, me gustaría saber si la prescripción de dosis indicada es viable, para decidir si debe repetirse la tomografía de planificación modificando la preparación del paciente.
 
 \textit{Story points}: 13 (dificultad: 3, complejidad: 5, incertidumbre: 3, total: 11)
 
-\item Historia 3: Como físico médico, quiero conocer el resultado posible de un plan para determinar los mejores parámetros a utilizar en la planificación del tratamiento y reducir la cantidad de iteraciones necesarias.
+\item Historia 3: como físico médico, quiero conocer el resultado posible de un plan para determinar los mejores parámetros a utilizar en la planificación del tratamiento y reducir la cantidad de iteraciones necesarias.
 
 \textit{Story points}: 21 (dificultad: 5, complejidad: 8, incertidumbre: 3, total: 16)
 \end{itemize}
@@ -316,166 +317,104 @@ Los entregables del proyecto son:
 \label{sec:wbs}
 
 \begin{enumerate}
+\item Planificación del proyecto (30 h)
+	\begin{enumerate}
+	\item Elaboración de la planificación del proyecto (25 h)
+	\item Reuniones con cliente y usuarios (5 h)
+	\end{enumerate}
 \item Análisis bibliográfico (40 h)
 	\begin{enumerate}
 	\item Búsqueda y análisis de bibliografía sobre predicción de DVH (20 h)
 	\item Búsqueda y análisis de bibliografía sobre arquitecturas de CNN y \textit{transfer learning} (20 h)
 	\end{enumerate}
-\item Cumplimiento de requerimientos normativos y éticos (25 h)
+\item Cumplimiento de requerimientos normativos y éticos (20 h)
 	\begin{enumerate}
-	\item Presentación del proyecto a CDI institucional (10 h)
+	\item Presentación del proyecto a CDI institucional (5 h)
 	\item Confección de documentación para presentación a CEEPISH (10 h)
 	\item Recopilación de consentimientos informados de posibles pacientes a incluir (5 h)
 	\end{enumerate}
-\item Conformación de base de datos (235 h)
+\item Conformación de base de datos (230 h)
 	\begin{enumerate}
 	\item Definición de criterios de inclusión en el proyecto (2 h)
 	\item Confección de listado de pacientes posibles (3 h)
 	\item Análisis de cumplimiento de criterios en listado de pacientes posibles (10 h)
-	\item Armado de nueva base de datos específica para el proyecto (10 h)
-	\item Recontorneo y replanificación de pacientes para incluir en base de datos (200 h)
+	\item Armado de nueva base de datos específica para el proyecto (5 h)
+	\item Replanificación de pacientes de distinto protocolo sin necesidad de revisión médica (40 h)
+	\item Recontorneo de pacientes con necesidad de revisión médica con software de autocontorneo (40 h)
+	\item Revisión médica y corrección de estructuras post autocontorneo (40 h)
+	\item Replanificación de pacientes post revisión médica (40 h)
+	\item Revisión y ajustes finales de planes para incluir en base de datos (40 h)
 	\item Anonimización de base de datos (10 h)
 	\end{enumerate}
-\item Extracción de datos del TPS (50 h)
+\newpage 
+\item Extracción de datos del TPS (40 h)
 	\begin{enumerate}
 	\item Estudio de formato de datos DICOM (10 h)
-	\item Desarrollo de código para la extracción de datos necesarios (CT, estructuras, DVH) (40 h)
+	\item Desarrollo de código para la extracción de datos necesarios (CT, estructuras, DVH) (30 h)
 	\end{enumerate}
-\item Desarrollo de CNN (110 h)
+\item Desarrollo de CNN (100 h)
 	\begin{enumerate}
 	\item Definición de arquitectura de CNN (5 h)
 	\item Análisis de necesidad de \textit{cluster} externo en función de tamaño de la base de datos (5 h)
-	\item Desarrollo de código para entrenamiento y validación de CNN (30 h)
-	\item Entrenamiento de CNN y optimización de hiperparámetros (70 h)
+	\item Desarrollo de código para entrenamiento y validación de CNN (25 h)
+	\item Entrenamiento inicial de CNN y ajustes de arquitectura (25 h)
+	\item Optimización de hiperparámetros (40 h)
 	\end{enumerate}
-\item Validación (60 h)
+\item Validación (50 h)
 	\begin{enumerate}
-	\item Evaluación de red con datos de test (20 h)
+	\item Evaluación de red con datos de test (10 h)
 	\item Análisis de métricas y resultados obtenidos (30 h)
 	\item Comparación con resultados reportados en la bibliografía (10 h)
 	\end{enumerate}
-\item Documentación final (80 h)
+\item Documentación final (100 h)
 	\begin{enumerate}
-	\item Elaboración de instructivo de uso (10 h)
-	\item Revisión de repositorio de código desarrollado y documentación del código (10 h)
+	\item Elaboración de instructivo de uso (5 h)
+	\item Revisión de repositorio de código desarrollado y documentación del código (5 h)
 	\item Elaboración de informes de avance (10 h)
-	\item Elaboración de memoria de trabajo final (40 h)
+	\item Elaboración de memoria de trabajo final - Taller de Trabajo Final A (30 h)
+	\item Elaboración de memoria de trabajo final - Taller de Trabajo Final B (40 h)
 	\item Confección de presentación final (10 h)
 	\end{enumerate}
 \end{enumerate}
 
-Cantidad total de horas: 600 h.
+Cantidad total de horas: 610 h.
 
 \section{10. Diagrama de Activity On Node}
 \label{sec:AoN}
 
-\begin{consigna}{red}
-Armar el AoN a partir del WBS definido en la etapa anterior.
-
-Una herramienta simple para desarrollar los diagramas es el Draw.io (\url{https://app.diagrams.net/}).
-\href{https://app.diagrams.net}{Draw.io}
-
+En la figura \ref{fig:AoN} se presenta el diagrama \textit{Activity On Node} (AoN), donde cada nodo representa una actividad con su duración (en horas). Para interpretar el diagrama se debe considerar:
+\begin{itemize}
+	\item Los rectángulos representan cada actividad o grupo de actividades, con su duración en horas.
+	\item Los hitos (bordes redondeados) marcan el fin de cada fase, y no tienen duración.
+	\item Los colores agrupan las actividades por fase. Cada fase finaliza en su hito asociado.
+	\item Los bordes y flechas más gruesos indican el camino crítico.
+\end{itemize}
 
 \begin{figure}[htpb]
 \centering 
-\includegraphics[width=.8\textwidth]{./Figuras/AoN.png}
+\includegraphics[width=.7\textwidth]{./Figuras/ActivityOnNode.png}
 \caption{Diagrama de \textit{Activity on Node}.}
 \label{fig:AoN}
 \end{figure}
 
-Indicar claramente en qué unidades están expresados los tiempos.
-De ser necesario indicar los caminos semi críticos y analizar sus tiempos mediante un cuadro.
-Es recomendable usar colores y un cuadro indicativo describiendo qué representa cada color.
+A partir del diagrama, se puede observar que el camino crítico de este proyecto es de 540 h, en comparación con las 610 h propuestas originalmente. El camino crítico asume la posibilidad de realizar ciertas tareas en paralelo, lo cual podría lograrse asignando más recursos humanos al proyecto.
+ 
 
-\end{consigna}
 
 \section{11. Diagrama de Gantt}
 \label{sec:gantt}
 
-\begin{consigna}{red}
-Existen muchos programas y recursos \textit{online} para hacer diagramas de Gantt, entre los cuales destacamos:
-
-\begin{itemize}
-\item Planner
-\item GanttProject
-\item Trello + \textit{plugins}. En el siguiente link hay un tutorial oficial: \\ \url{https://blog.trello.com/es/diagrama-de-gantt-de-un-proyecto}
-\item Creately, herramienta online colaborativa. \\\url{https://creately.com/diagram/example/ieb3p3ml/LaTeX}
-\item Se puede hacer en latex con el paquete \textit{pgfgantt}\\ \url{http://ctan.dcc.uchile.cl/graphics/pgf/contrib/pgfgantt/pgfgantt.pdf}
-\end{itemize}
-
-Pegar acá una captura de pantalla del diagrama de Gantt, cuidando que la letra sea suficientemente grande como para ser legible. 
-Si el diagrama queda demasiado ancho, se puede pegar primero la ``tabla'' del Gantt y luego pegar la parte del diagrama de barras del diagrama de Gantt.
-
-Configurar el software para que en la parte de la tabla muestre los códigos del EDT (WBS).\\
-Configurar el software para que al lado de cada barra muestre el nombre de cada tarea.\\
-Revisar que la fecha de finalización coincida con lo indicado en el Acta Constitutiva.
-
-En la figura \ref{fig:gantt}, se muestra un ejemplo de diagrama de gantt realizado con el paquete de \textit{pgfgantt}. 
-En la plantilla pueden ver el código que lo genera y usarlo de base para construir el propio.
-
-Las fechas pueden ser calculadas utilizando alguna de las herramientas antes citadas. Sin embargo, el siguiente ejemplo
-fue elaborado utilizando 
-\href{https://docs.google.com/spreadsheets/d/1fBz8NhSpc4tkkhz3KjJCbh1nR_ltDkfEcZi4tZXduqs}{esta hoja de cálculo}.
-
-Es importante destacar que el ancho del diagrama estará dado por la longitud del texto utilizado para las tareas 
-(Ejemplo: tarea 1, tarea 2, etcétera) y el valor \textit{x unit}. Para mejorar la apariencia del diagrama, es necesario
-ajustar este valor y, quizás, acortar los nombres de las tareas.
-
-\begin{figure}[htpb]
-  \begin{center}
-    \begin{ganttchart}[
-      time slot unit=day,
-      time slot format=isodate,
-      x unit=0.038cm,
-      y unit title=0.7cm,
-      y unit chart=0.6cm,
-      milestone/.append style={xscale=4}
-      ]{2021-03-05}{2021-12-16}
-      \gantttitlecalendar*{2021-03-05}{2021-12-16}{year} \\
-      \gantttitlecalendar*{2021-03-05}{2021-12-16}{month} \\
-      \ganttgroup{Duración Total}{2021-03-05}{2021-12-16} \\
-      %%%%%%%%%%%%%%%%%Organización
-      \ganttgroup{Organización}{2021-03-05}{2021-04-16} \\
-      \ganttbar{Planificación del proyecto}{2021-03-05}{2021-04-15} \\
-      %%%%%%%%%%%%%%%%%Ejecución
-      \ganttgroup{Ejecución}{2021-04-16}{2021-10-21} \\
-      \ganttbar{Tarea 1}{2021-04-16}{2021-04-29} \\
-      \ganttbar{Tarea 2}{2021-04-30}{2021-05-13} \\
-      \ganttbar{Tarea 3}{2021-05-14}{2021-05-27} \\
-      \ganttbar{Tarea 4}{2021-05-28}{2021-07-12} \\
-      \ganttbar{Tarea 5}{2021-07-13}{2021-08-09} \\
-      \ganttbar{Tarea 6}{2021-08-10}{2021-09-23} \\
-      \ganttbar{Tarea 7}{2021-09-24}{2021-09-30} \\
-      \ganttbar{Tarea 8}{2021-10-01}{2021-10-14} \\
-      \ganttbar{Tarea 9}{2021-10-15}{2021-10-21} \\
-      % %%%%%%%%%%%%%%%%%Finalización
-      \ganttgroup{Finalización}{2021-10-22}{2021-12-16} \\
-      \ganttbar{Memoria v1}{2021-10-22}{2021-11-04} \\
-      \ganttbar{Memoria v2}{2021-11-05}{2021-11-18} \\
-      \ganttbar{Memoria final}{2021-11-19}{2021-12-02} \\
-      % La fecha del siguiente milestone es la fecha en que terminamos la memoria
-      \ganttmilestone{Enviar memoria al director}{2021-12-02} \\
-      \ganttbar{Elaborar la presentación}{2021-12-03}{2021-12-16} \\
-      \ganttmilestone{Ensayo de la presentación}{2021-12-16} \\
-      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \end{ganttchart}
-  \end{center}
-  \caption{Diagrama de gantt de ejemplo}
-  \label{fig:gantt}
-\end{figure}
-
-
 \begin{landscape}
 \begin{figure}[htpb]
 \centering 
-\includegraphics[height=.85\textheight]{./Figuras/Gantt-2.png}
+\includegraphics[height=.8\textheight]{./Figuras/Gantt.png}
 \caption{Ejemplo de diagrama de Gantt (apaisado).} %Modificar este título acorde.
 \label{fig:diagGantt}
 \end{figure}
 
 \end{landscape}
 
-\end{consigna}
+
 
 
 \section{12. Presupuesto detallado del proyecto}
