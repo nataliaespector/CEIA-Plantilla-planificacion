@@ -60,6 +60,7 @@ Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios 
 0      & Creación del documento                                 &\fechaInicioName \\ \hline
 1      & Se completa hasta el punto 5 inclusive                & {9} de {septiembre} de 2025 \\ \hline
 2      & Se completa hasta el punto 9 inclusive				   & {16} de {septiembre} de 2025 \\ \hline
+3      & Se completa hasta el punto 12 inclusive			   & {22} de {septiembre} de 2025 \\ \hline
 %		  Se puede agregar algo más \newline
 %		  En distintas líneas \newline
 %		  Así                                                    & {día} de {mes} de 202X \\ \hline
@@ -84,7 +85,7 @@ Buenos Aires, \fechaInicioName
 
 \vspace{2cm}
 
-Por medio de la presente se acuerda con el \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'' y consistirá en la implementación de una red neuronal convolucional para la predicción de histogramas dosis-volumen en radioterapia de próstata, a partir de la tomografía computada de simulación y el contorneo de estructuras. El trabajo tendrá un presupuesto preliminar estimado de 610 horas y un costo estimado de \textcolor{red}{\$ 13400} dólares \textcolor{red}{(a ajustar en función de punto 12)}, con fecha de inicio el \fechaInicioName\hspace{1px} y fecha de presentación pública en el mes de \fechaFinalName.
+Por medio de la presente se acuerda con el \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'' y consistirá en la implementación de una red neuronal convolucional para la predicción de histogramas dosis-volumen en radioterapia de próstata, a partir de la tomografía computada de simulación y el contorneo de estructuras. El trabajo tendrá un presupuesto preliminar estimado de 610 horas y un costo estimado de \$ 13808 dólares, con fecha de inicio el \fechaInicioName\hspace{1px} y fecha de presentación pública en el mes de \fechaFinalName.
 
 Se adjunta a esta acta la planificación inicial.
 
@@ -404,38 +405,29 @@ A partir del diagrama, se puede observar que el camino crítico de este proyecto
 \section{11. Diagrama de Gantt}
 \label{sec:gantt}
 
+\begin{figure}[htpb]
+\centering 
+\includegraphics[height=.7\textheight]{./Figuras/Fig4-Gantt.png}
+\caption{Listado de actividades y duración para diagrama de Gantt.} %Modificar este título acorde.
+\label{fig:diagGantt1}
+\end{figure}
+
 \begin{landscape}
 \begin{figure}[htpb]
 \centering 
-\includegraphics[height=.8\textheight]{./Figuras/Gantt.png}
-\caption{Ejemplo de diagrama de Gantt (apaisado).} %Modificar este título acorde.
-\label{fig:diagGantt}
+\includegraphics[height=.7\textheight]{./Figuras/Fig5-Gantt.png}
+\caption{Diagrama de Gantt.} %Modificar este título acorde.
+\label{fig:diagGantt2}
 \end{figure}
-
 \end{landscape}
-
-
 
 
 \section{12. Presupuesto detallado del proyecto}
 \label{sec:presupuesto}
 
-\begin{consigna}{red}
-Si el proyecto es complejo entonces separarlo en partes:
-\begin{itemize}
-	\item Un total global, indicando el subtotal acumulado por cada una de las áreas.
-	\item El desglose detallado del subtotal de cada una de las áreas.
-\end{itemize}
-
-IMPORTANTE: No olvidarse de considerar los COSTOS INDIRECTOS.
-
-Incluir la aclaración de si se emplea como moneda el peso argentino (ARS) o si se usa moneda extranjera (USD, EUR, etc). Si es en moneda extranjera se debe indicar la tasa de conversión respecto a la moneda local en una fecha dada.
-
-\end{consigna}
-
 \begin{table}[htpb]
 \centering
-\begin{tabularx}{\linewidth}{@{}|X|c|r|r|@{}}
+\begin{tabularx}{\linewidth}{@{}|X|c|c|c|@{}}
 \hline
 \rowcolor[HTML]{C0C0C0} 
 \multicolumn{4}{|c|}{\cellcolor[HTML]{C0C0C0}COSTOS DIRECTOS} \\ \hline
@@ -444,24 +436,11 @@ Descripción &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Cantidad} &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor unitario} &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor total} \\ \hline
- &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} \\ \hline
- &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} \\ \hline
-\multicolumn{1}{|l|}{} &
-   &
-   &
-   \\ \hline
-\multicolumn{1}{|l|}{} &
-   &
-   &
-   \\ \hline
+Horas de ingeniería & 610 h & \$ 12 & \$ 7320 \\ \hline
+Horas de profesionales médicos & 80 h & \$ 30 & \$ 2400 \\ \hline
+
 \multicolumn{3}{|c|}{SUBTOTAL} &
-  \multicolumn{1}{c|}{} \\ \hline
+  \multicolumn{1}{c|}{\$ 9720} \\ \hline
 \rowcolor[HTML]{C0C0C0} 
 \multicolumn{4}{|c|}{\cellcolor[HTML]{C0C0C0}COSTOS INDIRECTOS} \\ \hline
 \rowcolor[HTML]{C0C0C0} 
@@ -469,26 +448,17 @@ Descripción &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Cantidad} &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor unitario} &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor total} \\ \hline
-\multicolumn{1}{|l|}{} &
-   &
-   &
-   \\ \hline
-\multicolumn{1}{|l|}{} &
-   &
-   &
-   \\ \hline
-\multicolumn{1}{|l|}{} &
-   &
-   &
-   \\ \hline
+Software autocontorneo (estimado) & 40 h & \$ 5 & \$ 200 \\ \hline
+40\% de costo directo & - & - & \$ 3888 \\ \hline
 \multicolumn{3}{|c|}{SUBTOTAL} &
-  \multicolumn{1}{c|}{} \\ \hline
+  \multicolumn{1}{c|}{\$ 4088} \\ \hline
 \rowcolor[HTML]{C0C0C0}
 \multicolumn{3}{|c|}{TOTAL} &
-   \\ \hline
+\$ 13808   \\ \hline
 \end{tabularx}%
 \end{table}
 
+\textit{Aclaración: los valores están expresados en dólares estadounidenses (USD). La cotización de referencia en pesos argentinos (ARS) es de \$1445, correspondiente al día 22 de septiembre de 2025.}
 
 \section{13. Gestión de riesgos}
 \label{sec:riesgos}
