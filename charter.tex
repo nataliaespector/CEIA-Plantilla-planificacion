@@ -65,7 +65,7 @@ Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios 
 %		  En distintas líneas \newline
 %		  Así                                                    & {día} de {mes} de 202X \\ \hline
 %3      & Se completa hasta el punto 12 inclusive                & {día} de {mes} de 202X \\ \hline
-%4      & Se completa el plan	                                 & {día} de {mes} de 202X \\ \hline
+4      & Se completa el plan	                                 & {30} de {septiembre} de 2025 \\ \hline
 
 % Si hay más correcciones pasada la versión 4 también se deben especificar acá
 
@@ -85,7 +85,7 @@ Buenos Aires, \fechaInicioName
 
 \vspace{2cm}
 
-Por medio de la presente se acuerda con el \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'' y consistirá en la implementación de una red neuronal convolucional para la predicción de histogramas dosis-volumen en radioterapia de próstata, a partir de la tomografía computada de simulación y el contorneo de estructuras. El trabajo tendrá un presupuesto preliminar estimado de 610 horas y un costo estimado de \$ 13808 dólares, con fecha de inicio el \fechaInicioName\hspace{1px} y fecha de presentación pública en el mes de \fechaFinalName.
+Por medio de la presente se acuerda con el \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'' y consistirá en la implementación de una red neuronal convolucional para la predicción de histogramas dosis-volumen en radioterapia de próstata, a partir de la tomografía computada de simulación y el contorneo de estructuras. El trabajo tendrá un presupuesto preliminar estimado de 610 horas y un costo estimado de \$ 13913 dólares, con fecha de inicio el \fechaInicioName\hspace{1px} y fecha de presentación pública en el mes de \fechaFinalName.
 
 Se adjunta a esta acta la planificación inicial.
 
@@ -442,10 +442,10 @@ Descripción &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor total} \\ \hline
 Horas de ingeniería & 610 h & \$ 12 & \$ 7320 \\ \hline
 Horas de profesionales médicos & 80 h & \$ 30 & \$ 2400 \\ \hline
-Horas de cómputo (GPU) & 150 h & \$ 0 & \$ 0 \\ \hline
+Horas de cómputo (GPU) & 150 h & \$ 0,5 & \$ 75 \\ \hline
 
 \multicolumn{3}{|c|}{SUBTOTAL} &
-  \multicolumn{1}{c|}{\$ 9720} \\ \hline
+  \multicolumn{1}{c|}{\$ 9795} \\ \hline
 \rowcolor[HTML]{C0C0C0} 
 \multicolumn{4}{|c|}{\cellcolor[HTML]{C0C0C0}COSTOS INDIRECTOS} \\ \hline
 \rowcolor[HTML]{C0C0C0} 
@@ -454,12 +454,12 @@ Descripción &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor unitario} &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor total} \\ \hline
 Software autocontorneo (estimado) & 40 h & \$ 5 & \$ 200 \\ \hline
-40\% de costo directo & - & - & \$ 3888 \\ \hline
+40\% de costo directo & - & - & \$ 3918 \\ \hline
 \multicolumn{3}{|c|}{SUBTOTAL} &
-  \multicolumn{1}{c|}{\$ 4088} \\ \hline
+  \multicolumn{1}{c|}{\$ 4118} \\ \hline
 \rowcolor[HTML]{C0C0C0}
 \multicolumn{3}{|c|}{TOTAL} &
-\$ 13808   \\ \hline
+\$ 13913   \\ \hline
 \end{tabularx}%
 \end{table}
 
@@ -468,31 +468,47 @@ Software autocontorneo (estimado) & 40 h & \$ 5 & \$ 200 \\ \hline
 \section{13. Gestión de riesgos}
 \label{sec:riesgos}
 
-\begin{consigna}{red}
-a) Identificación de los riesgos (al menos cinco) y estimación de sus consecuencias:
+a) Identificación de los riesgos y estimación de sus consecuencias:
  
-Riesgo 1: detallar el riesgo (riesgo es algo que si ocurre altera los planes previstos de forma negativa)
+Riesgo 1: no contar con la cantidad de datos suficiente para el entrenamiento y evaluación de la red.
 \begin{itemize}
-	\item Severidad (S): mientras más severo, más alto es el número (usar números del 1 al 10).\\
-	Justificar el motivo por el cual se asigna determinado número de severidad (S).
-	\item Probabilidad de ocurrencia (O): mientras más probable, más alto es el número (usar del 1 al 10).\\
-	Justificar el motivo por el cual se asigna determinado número de (O). 
+	\item Severidad (S): 10.\\
+	Se asigna el puntaje más alto debido a que no contar con la cantidad de datos adecuada impediría el desarrollo del proyecto.
+	\item Probabilidad de ocurrencia (O): 5.\\
+	Se tiene acceso a toda la base de datos institucional, pero al momento de la planificación se desconoce la cantidad de planes de tratamiento necesaria para el proyecto. 
 \end{itemize}   
 
-Riesgo 2:
+Riesgo 2: que el hardware no tenga la potencia adecuada para el entrenamiento de la red en tiempo y forma.
 \begin{itemize}
-	\item Severidad (S): X.\\
-	Justificación...
-	\item Ocurrencia (O): Y.\\
-	Justificación...
+	\item Severidad (S): 8.\\
+	Si esto ocurriera, el entrenamiento demoraría un tiempo mayor al previsto y no se cumplirían los plazos propuestos para el proyecto.
+	\item Ocurrencia (O): 4.\\
+	Se cuenta con recursos de alto rendimiento en la institución, que en principio deberían tener la capacidad suficiente para el manejo de los datos.
 \end{itemize}
 
-Riesgo 3:
+\newpage
+Riesgo 3: incumplimiento de los plazos establecidos para cada tarea. 
 \begin{itemize}
-	\item Severidad (S):  X.\\
-	Justificación...
-	\item Ocurrencia (O): Y.\\
-	Justificación...
+	\item Severidad (S):  5.\\
+	Se postergaría la presentación del proyecto y la finalización de la especialización. 
+	\item Ocurrencia (O): 7.\\
+	Podrían surgir tareas clínicas de mayor prioridad en el transcurso del proyecto, que dificulten el desarrollo de las tareas durante el horario laboral. 
+\end{itemize}
+
+Riesgo 4: no alcanzar los resultados esperados en cuanto a la capacidad de generalización de la red entrenada.
+\begin{itemize}
+	\item Severidad (S):  8.\\
+	Se asigna una severidad alta ya que no se cumplirían los objetivos del proyecto.
+	\item Ocurrencia (O): 2.\\
+	Se espera obtener un buen desempeño predictivo del modelo, apoyado en el estudio de distintas arquitecturas, la revisión bibliográfica y la experiencia de los directores en la temática.
+\end{itemize}
+
+Riesgo 5: demoras o rechazo del proyecto en la CEEPISH.
+\begin{itemize}
+	\item Severidad (S):  6.\\
+	Si surgieran observaciones sobre el proyecto, se deberían realizar los ajustes correspondientes y enviarlo nuevamente para su evaluación, lo que se traduciría en demoras. 
+	\item Ocurrencia (O): 2.\\
+	Se considera poco probable, dado que en esta instancia se requiere la utilización de datos retrospectivos y no implica una modificación en el tratamiento del paciente.
 \end{itemize}
 
 
@@ -504,37 +520,37 @@ b) Tabla de gestión de riesgos:      (El RPN se calcula como RPN=SxO)
 \hline
 \rowcolor[HTML]{C0C0C0} 
 Riesgo & S & O & RPN & S* & O* & RPN* \\ \hline
-       &   &   &     &    &    &      \\ \hline
-       &   &   &     &    &    &      \\ \hline
-       &   &   &     &    &    &      \\ \hline
-       &   &   &     &    &    &      \\ \hline
-       &   &   &     &    &    &      \\ \hline
+1. Datos insuficientes       &   10 & 5  & 50    & 5   & 5   & 25     \\ \hline
+2. Hardware no adecuado       & 8  & 4  & 32    & 3   & 4   & 12     \\ \hline
+3. Incumplimiento de plazos       & 5  & 7  & 35    & 5   & 3   & 15     \\ \hline
+4. No alcanzar resultados esperados       & 8  & 2  &  16   & -   & -   & -     \\ \hline
+5. Demoras o rechazo en CEEPISH       & 6  & 2  & 12    & -   & -   & -     \\ \hline
 \end{tabularx}%
 \end{table}
 
-Criterio adoptado: 
+Criterio adoptado: se tomarán medidas de mitigación en los riesgos cuyos números de RPN sean mayores a 30.
 
-Se tomarán medidas de mitigación en los riesgos cuyos números de RPN sean mayores a...
-
-Nota: los valores marcados con (*) en la tabla corresponden luego de haber aplicado la mitigación.
+\textit{Nota: los valores marcados con (*) en la tabla corresponden luego de haber aplicado la mitigación.}
 
 c) Plan de mitigación de los riesgos que originalmente excedían el RPN máximo establecido:
  
-Riesgo 1: plan de mitigación (si por el RPN fuera necesario elaborar un plan de mitigación).
-  Nueva asignación de S y O, con su respectiva justificación:
+Riesgo 1: es posible que luego de la definición de los criterios de inclusión y el armado de la base de datos se encuentre que la cantidad de tratamientos pertenecientes a un mismo protocolo no sea suficiente para el entrenamiento de la red. Si este fuera el caso, se propone replanificar pacientes tratados con otros protocolos, lo cual fue contemplado en el desglose de trabajo en tareas. Por este motivo, se mantiene la probabilidad de ocurrencia pero se reduce significativamente la severidad, ya que el impacto en el desarrollo del proyecto sería menor.
   \begin{itemize}
-	\item Severidad (S*): mientras más severo, más alto es el número (usar números del 1 al 10).
-          Justificar el motivo por el cual se asigna determinado número de severidad (S).
-	\item Probabilidad de ocurrencia (O*): mientras más probable, más alto es el número (usar del 1 al 10).
-          Justificar el motivo por el cual se asigna determinado número de (O).
+	\item Severidad (S*): 5.
+	\item Probabilidad de ocurrencia (O*): 5.
 	\end{itemize}
 
-Riesgo 2: plan de mitigación (si por el RPN fuera necesario elaborar un plan de mitigación).
+Riesgo 2: si bien se cuenta con el hardware necesario para este proyecto, podría ocurrir que no resulte suficiente y que se generen demoras excesivas en el entrenamiento de la red. En caso de que esto suceda, se podría utilizar un servicio de cómputo externo. El análisis de esta necesidad está previsto como una de las tareas a realizar, por lo que no implicaría un atraso del proyecto. Por esta razón, al igual que en el caso anterior, se mantiene la probabilidad de ocurrencia pero se reduce la severidad.
+  \begin{itemize}
+	\item Severidad (S*): 3.
+	\item Probabilidad de ocurrencia (O*): 4.
+	\end{itemize}
  
-Riesgo 3: plan de mitigación (si por el RPN fuera necesario elaborar un plan de mitigación).
-
-\end{consigna}
-
+Riesgo 3: el diagrama de Gantt fue realizado con la premisa de poder desarrollar el proyecto con dedicación parcial en el ámbito laboral. Si surgieran otras tareas más prioritarias y esto se dificultara, y con el objetivo de no extender los plazos para la finalización de la especialización, se contempla la dedicación al proyecto fuera del horario laboral, particularmente los fines de semana (que no fueron considerados en el diagrama). Por otro lado, si al conformar la base de datos se requieren más planificaciones para contar con datos suficientes, se prevé que otros miembros del equipo (médicos, físicos médicos y técnicos dosimetristas) asistan en el recontorneo y replanificación de pacientes de distintos protocolos. Al realizar parte de esta tarea en paralelo, se podrían mantener los plazos propuestos para el proyecto. Por este motivo, se mantiene la severidad del incumplimiento de plazos, pero se reduce la probabilidad de ocurrencia.
+  \begin{itemize}
+	\item Severidad (S*): 5.
+	\item Probabilidad de ocurrencia (O*): 3.
+	\end{itemize}
 
 \section{14. Gestión de la calidad}
 \label{sec:calidad}
