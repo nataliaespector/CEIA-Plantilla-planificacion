@@ -555,42 +555,97 @@ Riesgo 3: el diagrama de Gantt fue realizado con la premisa de poder desarrollar
 \section{14. Gestión de la calidad}
 \label{sec:calidad}
 
-\begin{consigna}{red}
-Elija al menos diez requerimientos que a su criterio sean los más importantes/críticos/que aportan más valor y para cada uno de ellos indique las acciones de verificación y validación que permitan asegurar su cumplimiento.
+A continuación se listan las acciones de verificación y validación que permitan asegurar el cumplimiento de algunos de los requerimientos más críticos:
 
 \begin{itemize} 
-\item Req \#1: copiar acá el requerimiento con su correspondiente número.
+\item Req \#1.1: el sistema deberá recibir la CT del paciente y las estructuras de interés y debe devolver el DVH predicho.
 
 \begin{itemize}
-	\item Verificación para confirmar si se cumplió con lo requerido antes de mostrar el sistema al cliente. Detallar.
-	\item Validación con el cliente para confirmar que está de acuerdo en que se cumplió con lo requerido. Detallar. 
+	\item Verificación: se analizarán detalladamente los tipos y estructura de archivos que recibe, procesa y entrega la red.
+	\item Validación: se realizará un ensayo con el cliente/usuario en el que se exporten los archivos correspondientes y se verifique que se reciba el resultado del DVH en forma gráfica o tabular.  
 \end{itemize}
 
+\newpage
+\item Req \#1.2: el modelo deberá ser accesible desde la estación de trabajo del TPS.
+
+\begin{itemize}
+	\item Verificación: se dispondrá de una estación de trabajo para comprobar que la exportación de los datos y la visualización de los resultados pueda realizarse desde esa computadora.
+	\item Validación: en el ensayo en conjunto con el cliente/usuario se comprobará que todo el proceso pueda realizarse sin necesidad de desplazarse a otra estación de trabajo.  
 \end{itemize}
 
-Tener en cuenta que en este contexto se pueden mencionar simulaciones, cálculos, revisión de hojas de datos, consulta con expertos, mediciones, etc.  
+\item Req \#1.3: la predicción deberá realizarse en un tiempo corto (del orden de minutos).
 
-Las acciones de verificación suelen considerar al entregable como ``caja blanca'', es decir se conoce en profundidad su funcionamiento interno.  
+\begin{itemize}
+	\item Verificación: se contabilizarán los tiempos requeridos para cada etapa del proceso hasta obtener la predicción.
+	\item Validación: en el ensayo en conjunto con el cliente/usuario se contabilizará el tiempo transcurrido entre el inicio del proceso y la obtención de la predicción.  
+\end{itemize}
 
-En cambio, las acciones de validación suelen considerar al entregable como ``caja negra'', es decir, que no se conocen los detalles de su funcionamiento interno.
+\item Req \#3.1: los pacientes incluidos en este proyecto deben haber dado su consentimiento para el uso de sus datos para fines académicos y de investigación.
 
-\end{consigna}
+\begin{itemize}
+	\item Verificación: previo a la anonimización, se recopilarán los consentimientos informados de los pacientes a incluir para verificar este punto.
+	\item Validación: se presentará un reporte al cliente sobre la recopilación de consentimientos informados para su evaluación y aprobación.
+\end{itemize}
+
+\item Req \#3.2: el uso de imágenes, planificaciones, y datos de pacientes retrospectivos para este proyecto deberá ser evaluado y aprobado por el Comité de Evaluación Ética de Proyectos de Investigación en Salud Humana (CEEPISH) de la provincia de Río Negro.
+
+\begin{itemize}
+	\item Verificación: se deberá contar con una constancia de la aprobación.
+	\item Validación: el cliente verificará la constancia de la aprobación.  
+\end{itemize}
+
+\item Req \#3.3: el proyecto deberá ser evaluado y aprobado por el Comité de Docencia e Investigación (CDI) de la institución.
+
+\begin{itemize}
+	\item Verificación: se deberá contar con una constancia de la aprobación.
+	\item Validación: el cliente verificará la constancia de la aprobación.  
+\end{itemize}
+
+\item Req \#4.1: se elaborará un informe detallado del trabajo realizado, incluyendo el procesamiento de los datos, la arquitectura de la red, el proceso de entrenamiento y el análisis de los resultados.
+
+\begin{itemize}
+	\item Verificación: el avance del informe se revisará con los directores durante todo el transcurso del proyecto, y ellos evaluarán y aprobarán el informe final.
+	\item Validación: se entregará el informe final al cliente para su evaluación y aprobación.  
+\end{itemize}
+
+\item Req \#4.2: se confeccionará un instructivo para el uso de la red entrenada y la interpretación de la predicción.
+
+\begin{itemize}
+	\item Verificación: se realizará una simulación del proceso completo utilizando el instructivo en conjunto con los directores para comprobar que esté correcto y completo.
+	\item Validación: el cliente/usuario realizará el proceso completo utilizando únicamente el instructivo, para comprobar que todos los pasos estén claros y que contenga toda la información necesaria.  
+\end{itemize}
+
+\item Req \#5.1: se compararán los resultados de la predicción con los resultados de casos que no hayan sido utilizados en el entrenamiento.
+
+\begin{itemize}
+	\item Verificación: se implementarán pruebas con el conjunto de test, se controlará que no haya \textit{data leakage} y se analizarán los resultados mediante métricas cuantitativas.
+	\item Validación: el cliente/usuario realizará un ensayo con un paciente que no haya sido utilizado en el entrenamiento y analizará los resultados, idealmente con un paciente nuevo (posterior al armado de la base de datos).
+\end{itemize}
+
+\item Req \#5.2: se contrastarán los resultados obtenidos con los reportados en la bibliografía.
+
+\begin{itemize}
+	\item Verificación: se recopilarán resultados reportados en la bibliografía y se realizará un informe comparativo.
+	\item Validación: se presentará el informe comparativo al cliente para su evaluación.  
+\end{itemize}
+
+\item Req \#5.3: se valorará el tiempo requerido para la planificación con y sin la implementación del modelo en conjunto con el usuario.
+
+\begin{itemize}
+	\item Verificación: se seleccionarán distintos casos de prueba y se cuantificará el tiempo en cada etapa de la planificación con y sin el modelo.
+	\item Validación: el cliente/usuario realizará un caso de prueba con y sin el modelo y evaluará el tiempo requerido en cada caso.  
+\end{itemize}
+\end{itemize}
 
 \section{15. Procesos de cierre}    
 \label{sec:cierre}
 
-\begin{consigna}{red}
-Establecer las pautas de trabajo para realizar una reunión final de evaluación del proyecto, tal que contemple las siguientes actividades:
-
+En esta sección se establecen las pautas de trabajo para la evaluación final y cierre del proyecto, que comprenden:
 \begin{itemize}
-	\item Pautas de trabajo que se seguirán para analizar si se respetó el Plan de Proyecto original:\\
-	 - Indicar quién se ocupará de hacer esto y cuál será el procedimiento a aplicar. 
-	\item Identificación de las técnicas y procedimientos útiles e inútiles que se emplearon, los problemas que surgieron y cómo se solucionaron:\\
-	 - Indicar quién se ocupará de hacer esto y cuál será el procedimiento para dejar registro.
-	\item Indicar quién organizará el acto de agradecimiento a todos los interesados, y en especial al equipo de trabajo y colaboradores:\\
-	  - Indicar esto y quién financiará los gastos correspondientes.
+	\item Reunión de cierre: se realizará una reunión final con los directores para  contrastar el plan original con el informe final. Se analizarán: el cumplimiento del propósito y los requerimientos, el grado de completitud de los entregables, los desvíos de cronograma (según el diagrama de Gantt) y de presupuesto, y las acciones pendientes, si correspondiera.
+	\item Lecciones aprendidas: se elaborará un informe que documente la efectividad de las técnicas y procedimientos utilizados, los problemas surgidos y su resolución, y las recomendaciones para trabajos futuros. Este informe se presentará a los directores e interesados y sus puntos principales se incorporarán a la memoria final.
+	\item Agradecimientos: se incluirán los agradecimientos a los participantes e interesados en la memoria y presentación final.
+	\item Presentación final: se realizará la defensa pública del proyecto en la instancia organizada por la FIUBA, invitando a todos los interesados.
 \end{itemize}
-
-\end{consigna}
 
 \end{document}
